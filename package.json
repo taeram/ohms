@@ -1,0 +1,16 @@
+{
+  "name": "ohms",
+  "description": "An SMS API for CouchPotato and SickBeard",
+  "version": "1.0.0",
+  "dependencies": {
+    "body-parser": "^1.10.1",
+    "express": "4.x",
+    "morgan": "^1.5.1",
+    "twilio": "1.x",
+    "underscore": "1.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/taeram/ohms.git"
+  }
+}

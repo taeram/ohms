@@ -1,0 +1,5 @@
+.env
+/node_modules/
+server.log
+history.json
+index.json
