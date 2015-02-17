@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 
 var app = express();
-var appPort = 3000;
+var appPort = process.env.PORT;
 var MAX_SMS_LENGTH = 160; // As defined by Twilio: http://www.twilio.com/docs/errors/21605
 var MAX_SEARCH_RESULTS = 10;
 
@@ -36,10 +36,21 @@ var sickbeardApi = {
 
 app.disable('x-powered-by');
 app.use(morgan('combined'));
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+if (process.env.TRUST_PROXY == 1) {
+    app.enable('trust proxy');
+}
 
 // Handle the request
 app.post('/', function(req, res) {
+    // If enabled, trust proxied requests. Otherwise, the validateExpressRequest() will always fail
+    if (app.get('trust proxy')) {
+        req.headers['host'] = req.headers['x-forwarded-host'];
+    } 
+
     // Make sure the request came from Twilio
     if (!debug && twilio.validateExpressRequest(req, process.env.TWILIO_AUTH_TOKEN) === false) {
         console.log("Request not from Twilio");

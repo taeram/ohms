@@ -35,6 +35,8 @@ Next, install and setup Ohms on your server:
     TWILIO_AUTH_TOKEN="AUTH_TOKEN"    # Your Twilio Auth Token
     COUCHPOTATO_API_KEY="API_KEY"     # Your CouchPotato API Key
     SICKBEARD_API_KEY="API_KEY"       # Your SickBeard API Key
+    PORT=6257                         # The port to run on
+    TRUST_PROXY=1                     # If set to "1", allow running Ohms behind a proxy (e.g. Apache, Nginx)
     EOF
 
     # Install foreman and setup the init scripts
