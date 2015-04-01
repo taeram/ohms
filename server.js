@@ -47,12 +47,12 @@ if (process.env.TRUST_PROXY == 1) {
 // Handle the request
 app.post('/', function(req, res) {
     // If enabled, trust proxied requests. Otherwise, the validateExpressRequest() will always fail
-    if (app.get('trust proxy')) {
+    if (app.get('trust proxy') && req.headers['x-forwarded-host']) {
         req.headers['host'] = req.headers['x-forwarded-host'];
     } 
 
     // Make sure the request came from Twilio
-    if (!debug && twilio.validateExpressRequest(req, process.env.TWILIO_AUTH_TOKEN) === false) {
+    if (twilio.validateExpressRequest(req, process.env.TWILIO_AUTH_TOKEN) === false) {
         console.log("Request not from Twilio");
         return res.status(403).send({status: 'forbidden'});
     }
