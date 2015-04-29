@@ -37,6 +37,7 @@ Next, install and setup Ohms on your server:
     SICKBEARD_API_KEY="API_KEY"       # Your SickBeard API Key
     PORT=6257                         # The port to run on
     TRUST_PROXY=1                     # If set to "1", allow running Ohms behind a proxy (e.g. Apache, Nginx)
+    WEBHOOK_URL="http://example.com"  # If running behind a proxy, you'll also need to set this to the same as your Messaging Request URL in Twilio
     EOF
 
     # Install foreman and setup the init scripts

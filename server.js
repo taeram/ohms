@@ -51,8 +51,13 @@ app.post('/', function(req, res) {
         req.headers['host'] = req.headers['x-forwarded-host'];
     } 
 
+    var validateOptions = {};
+    if (process.env.WEBHOOK_URL) {
+        validateOptions.url = process.env.WEBHOOK_URL;
+    }
+
     // Make sure the request came from Twilio
-    if (twilio.validateExpressRequest(req, process.env.TWILIO_AUTH_TOKEN) === false) {
+    if (twilio.validateExpressRequest(req, process.env.TWILIO_AUTH_TOKEN, validateOptions) === false) {
         console.log("Request not from Twilio");
         return res.status(403).send({status: 'forbidden'});
     }
