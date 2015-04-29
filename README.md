@@ -29,15 +29,34 @@ Next, install and setup Ohms on your server:
 
     # Setup your Environment variables
     tee .env << EOF
-    FROM_NUMBER="+12345556789"        # Your Twilio number
-    CONTROL_NUMBER="+12345556889"     # The mobile number that is allowed to send commands to the SMS API
-    TWILIO_SID="SID"                  # Your Twilio SID
-    TWILIO_AUTH_TOKEN="AUTH_TOKEN"    # Your Twilio Auth Token
-    COUCHPOTATO_API_KEY="API_KEY"     # Your CouchPotato API Key
-    SICKBEARD_API_KEY="API_KEY"       # Your SickBeard API Key
-    PORT=6257                         # The port to run on
-    TRUST_PROXY=1                     # If set to "1", allow running Ohms behind a proxy (e.g. Apache, Nginx)
-    WEBHOOK_URL="http://example.com"  # If running behind a proxy, you'll also need to set this to the same as your Messaging Request URL in Twilio
+    # Your Twilio number
+    FROM_NUMBER=+12345556789
+
+    # The mobile number that is allowed to send commands to the SMS API
+    CONTROL_NUMBER=+12345556889
+
+    # Your Twilio SID
+    TWILIO_SID=abcdef
+
+    # Your Twilio Auth Token
+    TWILIO_AUTH_TOKEN=abcdef
+
+    # The Couchpotato details
+    COUCHPOTATO_HOST=localhost
+    COUCHPOTATO_API_KEY=abcdef
+
+    # The Sickbeard details
+    SICKBEARD_HOST=localhost
+    SICKBEARD_API_KEY=abcdef
+
+    # The port to run Ohms on
+    PORT=6257
+
+    # If set to "1", allow running Ohms behind a proxy (e.g. Apache, Nginx)
+    TRUST_PROXY=1
+
+    # If running behind a proxy, you'll also need to set this to the same as your Messaging Request URL in Twilio
+    WEBHOOK_URL=http://example.com
     EOF
 
     # Install foreman and setup the init scripts

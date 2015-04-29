@@ -22,14 +22,14 @@ var commandIndexFile = "index.json";
 var debug = process.env.DEBUG || false;
 
 var couchPotatoApi = {
-    host: 'localhost',
+    host: process.env.COUCHPOTATO_HOST,
     port: 5050,
     path: '/couchpotato/api/' + process.env.COUCHPOTATO_API_KEY + '/',
     method: 'GET'
 };
 
 var sickbeardApi = {
-    host: 'localhost',
+    host: process.env.SICKBEARD_HOST,
     port: 8081,
     path: '/sickbeard/api/' + process.env.SICKBEARD_API_KEY + '/',
 };
